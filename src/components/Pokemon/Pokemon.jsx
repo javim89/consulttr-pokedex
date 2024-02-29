@@ -1,10 +1,9 @@
 import react from "react";
 import PokeBackgroundGreen from "../../assets/poke_background_green.png";
 import { Box, Typography } from "@mui/material";
-import Pidgey from "../../assets/pidgey.png";
 import PokeShadow from "../../assets/poke_shadow.png";
 
-const Pokemon = ({ name, hp }) => {
+const Pokemon = ({ pokemonImage, name, hp }) => {
   return (
     <Box
       sx={{
@@ -28,7 +27,7 @@ const Pokemon = ({ name, hp }) => {
         }}>
       </Box>
       <Box>
-        <img src={Pidgey} />
+        <img src={pokemonImage} />
       </Box>
       <Box sx={{
         position: "absolute",

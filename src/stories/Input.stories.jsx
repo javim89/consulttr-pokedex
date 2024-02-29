@@ -7,6 +7,6 @@ export default {
 
 export const Search = {
   args: {
-    placeholder: "Quick Search"
+    placeholder: "Quick Search",
   },
 };

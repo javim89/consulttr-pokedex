@@ -18,6 +18,11 @@ const theme = createMuiTheme({
       'monospace',
     ].join(','),
   },
+  palette: {
+    error: {
+      dark: "#FF4F4F"
+    }
+  }
 });
 
 // const theme = createMuiTheme({
