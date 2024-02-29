@@ -5,7 +5,9 @@ import { styled } from '@mui/material/styles';
 const MyStyledIconButton = styled(MUIIconButton)(({ theme }) => ({
   backgroundColor: '#652ca8', // Cambiar el color de fondo al pasar el ratón
   border: "1px solid #2F2F45",
-  borderRadius: "15px",
+  borderRadius: "18px",
+  width: 60,
+  height: 60,
   '&:hover': {
     backgroundColor: "#8a38f5",
   },

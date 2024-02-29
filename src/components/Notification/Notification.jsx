@@ -1,5 +1,5 @@
 import { Badge, Button, Box } from "@mui/material";
-import { NotificationIcon } from "../assets/icons";
+import { NotificationIcon } from "../../assets/icons";
 const Notification = ({ cant }) => {
   return (
     <Box

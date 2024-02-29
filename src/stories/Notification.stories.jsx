@@ -1,4 +1,4 @@
-import Notification from "../components/Notification";
+import Notification from "../components/Notification/Notification.jsx";
 
 export default {
   title: 'Notification/Notification',

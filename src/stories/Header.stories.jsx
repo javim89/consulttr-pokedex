@@ -15,6 +15,7 @@ export const HeaderStory = {
     profileImage: ProfileImage,
     name: "Kaiden Stormwood",
     profession: "Pokemon Trainer",
+    notifications: 3
   },
 };
 

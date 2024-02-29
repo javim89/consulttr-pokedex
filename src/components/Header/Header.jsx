@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Avatar, Typography } from "@mui/material";
-import Notification from '../Notification';
+import Notification from '../Notification/Notification.jsx';
 
-const Header = ({ profileImage, name, profession }) => (
+const Header = ({ profileImage, name, profession, notifications }) => (
   <Box sx={{
     display: "flex",
     alignItems: "center",
@@ -29,12 +29,14 @@ const Header = ({ profileImage, name, profession }) => (
           <Typography variant={"span"} fontSize={19} fontWeight={500}>{name}</Typography>
         </Box>
         <Box>
-          <Typography variant={"span"} fontSize={15} fontWeight={500}>{profession}</Typography>
+          <Typography variant={"span"} fontSize={15} fontWeight={500} sx={{
+            opacity: "42%"
+          }}>{profession}</Typography>
         </Box>
       </Box>
     </Box>
     <Box>
-      <Notification cant={3} />
+      <Notification cant={notifications} />
     </Box>
   </Box>
 );

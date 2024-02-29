@@ -5,6 +5,7 @@ const MyStyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root.MuiOutlinedInput-root': {
     backgroundColor: "#652ca8", // Cambiar el color de fondo
     borderRadius: 15, // Agregar un border radius de 15
+    width: 283,
     '& input': {
       color: 'white', // Cambiar el color del texto
       border: '2px solid #3D3179',
@@ -12,6 +13,7 @@ const MyStyledTextField = styled(TextField)(({ theme }) => ({
     },
     '& input::placeholder': {
       color: 'white', // Cambiar el color del placeholder
+      opacity: "88%"
     },
   },
 }));
