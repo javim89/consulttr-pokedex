@@ -15,7 +15,8 @@ const backgrounds = [
   PokeBackgroundBlue,
   PokeBackgroundRed,
 ];
-function Pokemon({ name, url, index }) {
+
+const Pokemon = ({ name, url, index }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: [`pokemon_${name}`],
     queryFn: () => fetchPokemon(url),
@@ -105,6 +106,6 @@ function Pokemon({ name, url, index }) {
       </Box>
     </Box>
   );
-}
+};
 
 export default Pokemon;

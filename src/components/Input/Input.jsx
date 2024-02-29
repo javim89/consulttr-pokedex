@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
-const MyStyledTextField = styled(TextField)(({ theme }) => ({
+const MyStyledTextField = styled(TextField)(() => ({
   "& .MuiInputBase-root.MuiOutlinedInput-root": {
     backgroundColor: "#604e9b", // Cambiar el color de fondo
     borderRadius: 15, // Agregar un border radius de 15
@@ -19,8 +19,6 @@ const MyStyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-function Input({ ...props }) {
-  return <MyStyledTextField {...props} />;
-}
+const Input = ({ ...props }) => <MyStyledTextField {...props} />;
 
 export default Input;

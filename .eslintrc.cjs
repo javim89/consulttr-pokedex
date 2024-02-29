@@ -13,6 +13,13 @@ module.exports = {
   rules: {
     "quotes": ["error", "double"],
     'prettier/prettier': 'error',
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: ['arrow-function', 'function-declaration'],
+        unnamedComponents: 'arrow-function',
+      },
+    ]
   },
 }

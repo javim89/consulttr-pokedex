@@ -2,7 +2,7 @@ import React from "react";
 import { IconButton as MUIIconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const MyStyledIconButton = styled(MUIIconButton)(({ theme }) => ({
+const MyStyledIconButton = styled(MUIIconButton)(() => ({
   backgroundColor: "#604e9b", // Cambiar el color de fondo al pasar el ratón
   border: "1px solid #2F2F45",
   borderRadius: "18px",
@@ -13,8 +13,8 @@ const MyStyledIconButton = styled(MUIIconButton)(({ theme }) => ({
   },
 }));
 
-function IconButton({ icon, ...props }) {
-  return <MyStyledIconButton {...props}>{icon}</MyStyledIconButton>;
-}
+const IconButton = ({ icon, ...props }) => (
+  <MyStyledIconButton {...props}>{icon}</MyStyledIconButton>
+);
 
 export default IconButton;
