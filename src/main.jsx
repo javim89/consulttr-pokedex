@@ -20,6 +20,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ["DM Mono", "monospace"].join(","),
+    button: {
+      textTransform: "none",
+    },
   },
   palette: {
     error: {
