@@ -12,6 +12,7 @@ import PokemonSection from "./sections/PokemonSection";
 function App() {
   const { ref, inView } = useInView();
   const [fetchNextPage, setFetchNextPage] = useState(false);
+
   useEffect(() => {
     setFetchNextPage(inView);
   }, [inView]);

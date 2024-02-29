@@ -31,8 +31,6 @@ function PokemonSection({ fetchNextPage }) {
     }
   }, [fetchNextPage]);
 
-  console.log(pokemons);
-
   if (isLoading) return "Loading";
   if (error) return "Error";
 
