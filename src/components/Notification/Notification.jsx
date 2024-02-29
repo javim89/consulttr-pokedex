@@ -1,6 +1,8 @@
-import { Badge, Button, Box } from "@mui/material";
+import React from "react";
+import { Badge, Box } from "@mui/material";
 import { NotificationIcon } from "../../assets/icons";
-const Notification = ({ cant }) => {
+
+function Notification({ cant }) {
   return (
     <Box
       sx={{
@@ -10,19 +12,24 @@ const Notification = ({ cant }) => {
         backgroundColor: "#652ca8",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
-      }}>
-      <Badge badgeContent={cant} color="error" sx={{
-        "& .MuiBadge-badge": {
-          width: 16,
-          height: 16,
-          minWidth: 16
-        }
-      }}>
+        alignItems: "center",
+      }}
+    >
+      <Badge
+        badgeContent={cant}
+        color="error"
+        sx={{
+          "& .MuiBadge-badge": {
+            width: 16,
+            height: 16,
+            minWidth: 16,
+          },
+        }}
+      >
         <NotificationIcon />
       </Badge>
     </Box>
-  )
+  );
 }
 
 export default Notification;
