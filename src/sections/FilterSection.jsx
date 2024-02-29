@@ -44,7 +44,7 @@ function FilterSection() {
                 filtersSelected.indexOf(type.type) === -1
                   ? "none"
                   : "underline",
-              textUnderlineOffset: "6px",
+              textUnderlineOffset: "8px",
               textDecorationThickness: "3px",
             }}
           >
