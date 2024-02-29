@@ -1,7 +1,7 @@
-import Input from "../components/Input/Input.jsx";
+import Input from "./Input";
 
 export default {
-  title: 'Input/Search',
+  title: "Input/Search",
   component: Input,
 };
 

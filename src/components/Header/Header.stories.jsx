@@ -1,12 +1,12 @@
-import Header from '../components/Header/Header.jsx';
-import ProfileImage from "../assets/profile2.png";
+import Header from "./Header";
+import ProfileImage from "../../assets/profile2.png";
 
 export default {
-  title: 'Example/Header',
+  title: "Example/Header",
   component: Header,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 
@@ -15,7 +15,6 @@ export const HeaderStory = {
     profileImage: ProfileImage,
     name: "Kaiden Stormwood",
     profession: "Pokemon Trainer",
-    notifications: 3
+    notifications: 3,
   },
 };
-

@@ -1,4 +1,4 @@
-import Pokemon from "../components/Pokemon/Pokemon";
+import Pokemon from "./Pokemon";
 
 export default {
   title: "Pokemon/Pokemon",

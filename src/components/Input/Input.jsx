@@ -4,7 +4,7 @@ import React from "react";
 
 const MyStyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-root.MuiOutlinedInput-root": {
-    backgroundColor: "#652ca8", // Cambiar el color de fondo
+    backgroundColor: "#604e9b", // Cambiar el color de fondo
     borderRadius: 15, // Agregar un border radius de 15
     width: 283,
     "& input": {
