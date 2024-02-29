@@ -1,11 +1,16 @@
+import React from "react";
 import { Box } from "@mui/material";
 
-const HomeLayout = ({ children }) => {
+function HomeLayout({ children }) {
   return (
-    <Box sx={{}}>
+    <Box
+      sx={{
+        minHeight: "100dvh",
+      }}
+    >
       {children}
     </Box>
-  )
-};
+  );
+}
 
 export default HomeLayout;

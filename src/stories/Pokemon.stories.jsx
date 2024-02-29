@@ -1,16 +1,14 @@
-import Pokemon from '../components/Pokemon/Pokemon.jsx';
-import Pidgey from "../assets/pidgey.png";
+import Pokemon from "../components/Pokemon/Pokemon";
 
 export default {
-  title: 'Pokemon/Pokemon',
+  title: "Pokemon/Pokemon",
   component: Pokemon,
 };
 
 export const Primary = {
   args: {
+    url: "https://pokeapi.co/api/v2/pokemon/4/",
+    index: 1,
     name: "Pidgey",
-    hp: "50",
-    pokemonImage: Pidgey
   },
 };
-

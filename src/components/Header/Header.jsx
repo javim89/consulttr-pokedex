@@ -8,7 +8,6 @@ function Header({ profileImage, name, profession, notifications }) {
       sx={{
         display: "flex",
         alignItems: "center",
-        width: "350px",
         justifyContent: "space-between",
       }}
     >
