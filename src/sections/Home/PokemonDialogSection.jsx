@@ -51,7 +51,11 @@ const PokemonDialogSection = ({ open, close, pokemon }) => (
         <Typography>Type:</Typography>
         <Stack direction="row" spacing={2}>
           {pokemon?.types.map((type) => (
-            <Chip label={type.type.name} variant="outlined" />
+            <Chip
+              key={type.type.name}
+              label={type.type.name}
+              variant="outlined"
+            />
           ))}
         </Stack>
       </Box>

@@ -4,16 +4,15 @@ import { Grid, Box } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import fetchPokemonList from "../../services/fetchPokemonList";
 import Pokemon from "../../components/Pokemon/Pokemon";
+import usePokemon from "../../hooks/usePokemon";
 
 const PokemonSection = () => {
   const { ref, inView } = useInView();
   const [fetchNextPage, setFetchNextPage] = useState(false);
-
+  const { setPokemons, filteredPokemons } = usePokemon();
   useEffect(() => {
     setFetchNextPage(inView);
   }, [inView]);
-
-  const [pokemons, setPokemons] = useState([]);
 
   const {
     data,
@@ -45,7 +44,7 @@ const PokemonSection = () => {
   return (
     <Box mb="30px">
       <Grid container spacing={2}>
-        {pokemons.map((res, index) => (
+        {filteredPokemons.map((res, index) => (
           <Grid item xs={6} md={4} lg={3} key={res.name}>
             <Pokemon name={res.name} url={res.url} index={index} />
           </Grid>

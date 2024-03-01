@@ -1,22 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import pokemonTypes from "../../constants/const";
+import usePokemon from "../../hooks/usePokemon";
 
 const FilterSection = () => {
-  const [filtersSelected, setFiltersSelected] = useState([]);
-
-  const toogleFilter = (type) => {
-    const isSelected = filtersSelected.find(
-      (filterType) => filterType === type,
-    );
-    if (isSelected) {
-      setFiltersSelected(
-        filtersSelected.filter((filterType) => filterType !== type),
-      );
-      return;
-    }
-    setFiltersSelected([...filtersSelected, type]);
-  };
+  const { toogleFilterSelected, filtersSelected } = usePokemon();
 
   return (
     <Box mb="30px">
@@ -33,7 +21,7 @@ const FilterSection = () => {
               display: "inline-block",
               textAlign: "center",
             }}
-            onClick={() => toogleFilter(type.type)}
+            onClick={() => toogleFilterSelected(type.type)}
             key={type.type}
           >
             <Typography

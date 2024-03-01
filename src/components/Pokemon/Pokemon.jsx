@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, Skeleton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import PokeBackgroundGreen from "../../assets/poke_background_green.png";
@@ -8,6 +8,7 @@ import PokeBackgroundRed from "../../assets/poke_background_red.png";
 import PokeShadow from "../../assets/poke_shadow.png";
 import { fetchPokemon } from "../../services/fetchPokemon";
 import capitalizeString from "../../utils";
+import usePokemon from "../../hooks/usePokemon";
 
 const backgrounds = [
   PokeBackgroundGreen,
@@ -17,12 +18,20 @@ const backgrounds = [
 ];
 
 const Pokemon = ({ name, url, index }) => {
+  const { addPokemonData } = usePokemon();
+
   const { data, isLoading, error } = useQuery({
     queryKey: [`pokemon_${name}`],
     queryFn: () => fetchPokemon(url),
   });
 
   if (error) return "error";
+
+  useEffect(() => {
+    if (data) {
+      addPokemonData(data);
+    }
+  }, [data]);
 
   return (
     <Box

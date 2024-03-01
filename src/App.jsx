@@ -5,6 +5,7 @@ import FilterSection from "./sections/Home/FilterSection";
 import HeaderSection from "./sections/Home/HeaderSection";
 import TitleSection from "./sections/Home/TitleSection";
 import SearchSection from "./sections/Home/SearchSection";
+import PokemonProvider from "./context/PokemonContext";
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
       <HeaderSection />
       <TitleSection />
       <SearchSection />
-      <FilterSection />
-      <PokemonSection />
+      <PokemonProvider>
+        <FilterSection />
+        <PokemonSection />
+      </PokemonProvider>
     </HomeLayout>
   );
 }
