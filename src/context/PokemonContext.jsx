@@ -18,10 +18,7 @@ const toogleFilters = (state, type) => {
     : [...state.filtersSelected, type];
 };
 
-const filterPokemons = (state) => {
-  console.log(state.filtersSelected);
-  return state.pokemons;
-};
+const filterPokemons = (state) => state.pokemons;
 
 const addPokemonInformation = (state, pokemonData) => {
   const pokemons = state.pokemons.map((pokemon) => {
