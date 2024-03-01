@@ -5,4 +5,11 @@ const fetchPokemon = async (url) => {
   return res.data;
 };
 
-export default fetchPokemon;
+const fetchPokemonByName = async (pokemon) => {
+  const res = await axios.get(
+    `${import.meta.env.VITE_POKE_API_URL}/pokemon/${pokemon}`,
+  );
+  return res.data;
+};
+
+export { fetchPokemon, fetchPokemonByName };

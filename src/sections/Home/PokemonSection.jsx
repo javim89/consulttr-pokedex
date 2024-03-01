@@ -40,7 +40,6 @@ const PokemonSection = () => {
     }
   }, [fetchNextPage]);
 
-  if (isLoading) return "Loading";
   if (error) return "Error";
 
   return (
@@ -52,7 +51,7 @@ const PokemonSection = () => {
           </Grid>
         ))}
       </Grid>
-      <div ref={ref} />
+      <div ref={ref}>{isLoading && "Loading..."}</div>
     </Box>
   );
 };

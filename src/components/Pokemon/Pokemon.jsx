@@ -6,7 +6,7 @@ import PokeBackgroundOrange from "../../assets/poke_background_orange.png";
 import PokeBackgroundBlue from "../../assets/poke_background_blue.png";
 import PokeBackgroundRed from "../../assets/poke_background_red.png";
 import PokeShadow from "../../assets/poke_shadow.png";
-import fetchPokemon from "../../services/fetchPokemon";
+import { fetchPokemon } from "../../services/fetchPokemon";
 import capitalizeString from "../../utils";
 
 const backgrounds = [
