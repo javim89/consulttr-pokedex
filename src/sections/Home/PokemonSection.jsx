@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { useInView } from "react-intersection-observer";
-import fetchPokemonList from "../services/fetchPokemonList";
-import Pokemon from "../components/Pokemon/Pokemon";
+import fetchPokemonList from "../../services/fetchPokemonList";
+import Pokemon from "../../components/Pokemon/Pokemon";
 
-function PokemonSection() {
+const PokemonSection = () => {
   const { ref, inView } = useInView();
   const [fetchNextPage, setFetchNextPage] = useState(false);
 
@@ -44,7 +44,7 @@ function PokemonSection() {
   if (error) return "Error";
 
   return (
-    <>
+    <Box mb="30px">
       <Grid container spacing={2}>
         {pokemons.map((res, index) => (
           <Grid item xs={6} md={4} lg={3} key={res.name}>
@@ -53,8 +53,8 @@ function PokemonSection() {
         ))}
       </Grid>
       <div ref={ref} />
-    </>
+    </Box>
   );
-}
+};
 
 export default PokemonSection;
