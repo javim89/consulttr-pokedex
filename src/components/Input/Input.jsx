@@ -4,16 +4,15 @@ import React from "react";
 
 const MyStyledTextField = styled(TextField)(() => ({
   "& .MuiInputBase-root.MuiOutlinedInput-root": {
-    backgroundColor: "#604e9b", // Cambiar el color de fondo
-    borderRadius: 15, // Agregar un border radius de 15
-    width: 283,
+    backgroundColor: "#604e9b",
+    borderRadius: 15,
     "& input": {
-      color: "white", // Cambiar el color del texto
+      color: "white",
       border: "2px solid #3D3179",
-      borderRadius: 15, // Agregar un border radius de 15
+      borderRadius: 15,
     },
     "& input::placeholder": {
-      color: "white", // Cambiar el color del placeholder
+      color: "white",
       opacity: "88%",
     },
   },

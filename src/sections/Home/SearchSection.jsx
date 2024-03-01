@@ -1,24 +1,18 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import Input from "../../components/Input/Input";
 import IconButton from "../../components/Button/IconButton";
 import { SearchIcon } from "../../assets/icons";
 
 const SearchSection = () => (
-  <Box
-    mb="30px"
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-    }}
-  >
-    <Box>
+  <Grid container spacing={4} mb="30px">
+    <Grid item>
       <Input placeholder="Quick Search" />
-    </Box>
-    <Box>
+    </Grid>
+    <Grid item>
       <IconButton icon={<SearchIcon />} />
-    </Box>
-  </Box>
+    </Grid>
+  </Grid>
 );
 
 export default SearchSection;
