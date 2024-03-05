@@ -1,4 +1,8 @@
-import React, { createContext, useReducer, useMemo } from "react";
+/* eslint-disable prettier/prettier */
+import React, { createContext, useReducer, useMemo, useEffect } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import fetchPokemonList from "../services/fetchPokemonList";
+import { fetchPokemon } from "../services/fetchPokemon";
 
 export const PokemonContext = createContext();
 
@@ -15,22 +19,17 @@ const toogleFilters = (state, type) => {
 
   return isSelected
     ? state.filtersSelected.filter((filterType) => filterType !== type)
-    : [...state.filtersSelected, type];
+    : [...state.filtersSelected, type.toLowerCase()];
 };
 
-const filterPokemons = (state) => state.pokemons;
-
-const addPokemonInformation = (state, pokemonData) => {
-  const pokemons = state.pokemons.map((pokemon) => {
-    if (pokemon.name === pokemonData.name) {
-      return {
-        ...pokemon,
-        ...pokemonData,
-      };
-    }
-    return pokemon;
-  });
-  return pokemons;
+const filterPokemons = (state) => {
+  const filteredPokemons =
+    state.filtersSelected.length >= 1
+      ? state.pokemons.filter((pokemon) =>
+        pokemon.types.some((type) => state.filtersSelected.includes(type)),
+      )
+      : state.pokemons;
+  return filteredPokemons;
 };
 
 const pokemonReducer = (state, action) => {
@@ -39,18 +38,16 @@ const pokemonReducer = (state, action) => {
       return {
         ...state,
         pokemons: action.payload,
-        filteredPokemons: action.payload,
       };
     case "FILTER_TYPES":
       return {
         ...state,
         filtersSelected: toogleFilters(state, action.payload),
-        filteredPokemons: filterPokemons(state),
       };
-    case "ADD_POKEMON_INFORMATION":
+    case "UPDATE_FILTER_POKEMONS":
       return {
         ...state,
-        pokemons: addPokemonInformation(state, action.payload),
+        filteredPokemons: filterPokemons(state),
       };
     default:
       return state;
@@ -60,10 +57,26 @@ const pokemonReducer = (state, action) => {
 const PokemonProvider = ({ children }) => {
   const [state, dispatch] = useReducer(pokemonReducer, initalState);
 
+  const {
+    data: dataPokemons,
+    isFetching: isFetchingPokemons,
+    error: errorPokemons,
+    fetchNextPage: fetchNextPokemons,
+  } = useInfiniteQuery({
+    queryKey: ["pokemonList"],
+    queryFn: ({ pageParam }) => fetchPokemonList({ page: pageParam }),
+    initialPageParam: 1,
+    getNextPageParam: (_lastPage, _allPages, lastPageParam) =>
+      lastPageParam + 1,
+  });
+
   const setPokemons = (pokemons) => {
     dispatch({
       type: "SET_POKEMONS",
       payload: pokemons,
+    });
+    dispatch({
+      type: "UPDATE_FILTER_POKEMONS",
     });
   };
 
@@ -72,18 +85,51 @@ const PokemonProvider = ({ children }) => {
       type: "FILTER_TYPES",
       payload: type,
     });
-  };
-
-  const addPokemonData = (pokemonData) => {
     dispatch({
-      type: "ADD_POKEMON_INFORMATION",
-      payload: pokemonData,
+      type: "UPDATE_FILTER_POKEMONS",
     });
   };
 
+  useEffect(() => {
+    const getPokemonsData = async (pages) => {
+      const promises = pages[dataPokemons.pages.length - 1].results.map(
+        async (result) => {
+          const pokemon = await fetchPokemon(result.url);
+          return {
+            ...result,
+            pokemonImage: pokemon.sprites.front_default,
+            hp: pokemon.stats[0]?.base_stat,
+            types: pokemon.types.map((type) => type.type.name),
+          };
+        },
+      );
+
+      const detailedData = await Promise.all(promises);
+      setPokemons([...state.pokemons, ...detailedData]);
+    };
+
+    if (dataPokemons?.pages) {
+      getPokemonsData(dataPokemons?.pages);
+    }
+  }, [dataPokemons]);
+
   const contextValue = useMemo(
-    () => ({ ...state, setPokemons, toogleFilterSelected, addPokemonData }),
-    [state, setPokemons, toogleFilterSelected, addPokemonData],
+    () => ({
+      ...state,
+      setPokemons,
+      toogleFilterSelected,
+      isFetchingPokemons,
+      errorPokemons,
+      fetchNextPokemons,
+    }),
+    [
+      state,
+      setPokemons,
+      toogleFilterSelected,
+      isFetchingPokemons,
+      errorPokemons,
+      fetchNextPokemons,
+    ],
   );
 
   return (

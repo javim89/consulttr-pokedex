@@ -21,7 +21,7 @@ const FilterSection = () => {
               display: "inline-block",
               textAlign: "center",
             }}
-            onClick={() => toogleFilterSelected(type.type)}
+            onClick={() => toogleFilterSelected(type.type.toLocaleLowerCase())}
             key={type.type}
           >
             <Typography
@@ -29,11 +29,11 @@ const FilterSection = () => {
                 fontSize: "17px",
                 fontWeight: 500,
                 color:
-                  filtersSelected.indexOf(type.type) === -1
+                  filtersSelected.indexOf(type.type.toLowerCase()) === -1
                     ? "#ACACAC"
                     : "white",
                 textDecoration:
-                  filtersSelected.indexOf(type.type) === -1
+                  filtersSelected.indexOf(type.type.toLowerCase()) === -1
                     ? "none"
                     : "underline",
                 textUnderlineOffset: "8px",
