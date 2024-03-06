@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grow } from "@mui/material";
 import PokeBackgroundGreen from "../../assets/poke_background_green.png";
 import PokeBackgroundOrange from "../../assets/poke_background_orange.png";
 import PokeBackgroundBlue from "../../assets/poke_background_blue.png";
@@ -15,58 +15,60 @@ const backgrounds = [
 ];
 
 const Pokemon = ({ name, hp, pokemonImage, index }) => (
-  <Box
-    sx={{
-      width: "166px",
-      height: "206px",
-      backgroundImage: `url(${backgrounds[index % backgrounds.length]})`,
-      backgroundRepeat: "no-repeat",
-      position: "relative",
-    }}
-  >
-    <Box
-      sx={{
-        width: "144px",
-        height: "143px",
-        backgroundImage: `url(${PokeShadow})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "contain",
-        position: "absolute",
-        top: "51px",
-        left: "4px",
-      }}
-    />
+  <Grow in style={{ transformOrigin: "0 0 0" }} timeout={1000}>
     <Box
       sx={{
         width: "166px",
         height: "206px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundImage: `url(${backgrounds[index % backgrounds.length]})`,
+        backgroundRepeat: "no-repeat",
+        position: "relative",
       }}
     >
-      <img src={pokemonImage} alt="pokemon img" height={206} width={166} />
+      <Box
+        sx={{
+          width: "144px",
+          height: "143px",
+          backgroundImage: `url(${PokeShadow})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          position: "absolute",
+          top: "51px",
+          left: "4px",
+        }}
+      />
+      <Box
+        sx={{
+          width: "166px",
+          height: "206px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={pokemonImage} alt="pokemon img" height={206} width={166} />
+      </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "139px",
+          left: "12px",
+          color: "white",
+        }}
+      >
+        <div>
+          <Typography fontWeight={500} fontSize={19.51} variant="span">
+            {capitalizeString(name)}
+          </Typography>
+        </div>
+        <div>
+          <Typography fontWeight={500} fontSize={16} variant="span">
+            HP {hp}
+          </Typography>
+        </div>
+      </Box>
     </Box>
-    <Box
-      sx={{
-        position: "absolute",
-        top: "139px",
-        left: "12px",
-        color: "white",
-      }}
-    >
-      <div>
-        <Typography fontWeight={500} fontSize={19.51} variant="span">
-          {capitalizeString(name)}
-        </Typography>
-      </div>
-      <div>
-        <Typography fontWeight={500} fontSize={16} variant="span">
-          HP {hp}
-        </Typography>
-      </div>
-    </Box>
-  </Box>
+  </Grow>
 );
 
 export default Pokemon;

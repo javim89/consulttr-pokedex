@@ -7,8 +7,10 @@ export default {
 
 export const Primary = {
   args: {
-    url: "https://pokeapi.co/api/v2/pokemon/4/",
-    index: 1,
     name: "Pidgey",
+    pokemonImage:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    hp: 33,
+    index: 1,
   },
 };

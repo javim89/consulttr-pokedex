@@ -10,6 +10,7 @@ const initalState = {
   pokemons: [],
   filteredPokemons: [],
   filtersSelected: [],
+  openSnackBar: false
 };
 
 const toogleFilters = (state, type) => {
@@ -49,6 +50,11 @@ const pokemonReducer = (state, action) => {
         ...state,
         filteredPokemons: filterPokemons(state),
       };
+    case "TOOGLE_SNACK_BAR":
+      return {
+        ...state,
+        openSnackBar: !state.openSnackBar
+      };
     default:
       return state;
   }
@@ -70,6 +76,12 @@ const PokemonProvider = ({ children }) => {
     getNextPageParam: (lastPage, _, lastPageParam) => lastPage.next ? lastPageParam + 1 : null,
   });
 
+  const toogleSnackBar = () => {
+    dispatch({
+      type: "TOOGLE_SNACK_BAR"
+    })
+  }
+
   const setPokemons = (pokemons) => {
     dispatch({
       type: "SET_POKEMONS",
@@ -78,6 +90,7 @@ const PokemonProvider = ({ children }) => {
     dispatch({
       type: "UPDATE_FILTER_POKEMONS",
     });
+    toogleSnackBar()
   };
 
   const toogleFilterSelected = (type) => {
@@ -121,7 +134,8 @@ const PokemonProvider = ({ children }) => {
       isFetchingPokemons,
       errorPokemons,
       fetchNextPokemons,
-      hasNextPage
+      hasNextPage,
+      toogleSnackBar
     }),
     [
       state,
@@ -130,7 +144,8 @@ const PokemonProvider = ({ children }) => {
       isFetchingPokemons,
       errorPokemons,
       fetchNextPokemons,
-      hasNextPage
+      hasNextPage,
+      toogleSnackBar
     ],
   );
 

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect } from "react";
 
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import Pokemon from "../../components/Pokemon/Pokemon";
 import usePokemon from "../../hooks/usePokemon";
@@ -49,8 +49,8 @@ const PokemonSection = () => {
           {!hasNextPage
             ? "Nothing more pokemons to load"
             : (hasNextPage || isFetchingPokemons) && (
-              <button
-                type="button"
+              <Button
+                variant="contained"
                 ref={ref}
                 onClick={() => fetchNextPokemons()}
                 disabled={!hasNextPage || isFetchingPokemons}
@@ -58,7 +58,7 @@ const PokemonSection = () => {
                 {isFetchingPokemons
                   ? "Loading more..."
                   : "Load More pokemons"}
-              </button>
+              </Button>
             )}
         </Grid>
       </Grid>
