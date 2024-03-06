@@ -62,12 +62,12 @@ const PokemonProvider = ({ children }) => {
     isFetching: isFetchingPokemons,
     error: errorPokemons,
     fetchNextPage: fetchNextPokemons,
+    hasNextPage,
   } = useInfiniteQuery({
     queryKey: ["pokemonList"],
     queryFn: ({ pageParam }) => fetchPokemonList({ page: pageParam }),
     initialPageParam: 1,
-    getNextPageParam: (_lastPage, _allPages, lastPageParam) =>
-      lastPageParam + 1,
+    getNextPageParam: (lastPage, _, lastPageParam) => lastPage.next ? lastPageParam + 1 : null,
   });
 
   const setPokemons = (pokemons) => {
@@ -121,6 +121,7 @@ const PokemonProvider = ({ children }) => {
       isFetchingPokemons,
       errorPokemons,
       fetchNextPokemons,
+      hasNextPage
     }),
     [
       state,
@@ -129,6 +130,7 @@ const PokemonProvider = ({ children }) => {
       isFetchingPokemons,
       errorPokemons,
       fetchNextPokemons,
+      hasNextPage
     ],
   );
 

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect } from "react";
 
 import { Grid, Box } from "@mui/material";
@@ -7,8 +8,13 @@ import usePokemon from "../../hooks/usePokemon";
 
 const PokemonSection = () => {
   const { ref, inView } = useInView();
-  const { filteredPokemons, fetchNextPokemons, error, isFetchingPokemons } =
-    usePokemon();
+  const {
+    filteredPokemons,
+    hasNextPage,
+    fetchNextPokemons,
+    error,
+    isFetchingPokemons,
+  } = usePokemon();
 
   useEffect(() => {
     if (inView) {
@@ -32,7 +38,30 @@ const PokemonSection = () => {
           </Grid>
         ))}
       </Grid>
-      <div ref={ref}>{isFetchingPokemons && "Loading..."}</div>
+      <Grid
+        layout
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        mt={8}
+      >
+        <Grid item>
+          {!hasNextPage
+            ? "Nothing more pokemons to load"
+            : (hasNextPage || isFetchingPokemons) && (
+              <button
+                type="button"
+                ref={ref}
+                onClick={() => fetchNextPokemons()}
+                disabled={!hasNextPage || isFetchingPokemons}
+              >
+                {isFetchingPokemons
+                  ? "Loading more..."
+                  : "Load More pokemons"}
+              </button>
+            )}
+        </Grid>
+      </Grid>
     </Box>
   );
 };
