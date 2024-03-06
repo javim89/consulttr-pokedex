@@ -32,12 +32,18 @@ const FilterSection = () => {
                   filtersSelected.indexOf(type.type.toLowerCase()) === -1
                     ? "#ACACAC"
                     : "white",
-                textDecoration:
-                  filtersSelected.indexOf(type.type.toLowerCase()) === -1
-                    ? "none"
-                    : "underline",
-                textUnderlineOffset: "8px",
-                textDecorationThickness: "3px",
+                "&::before": {
+                  borderBottom: "4px solid white",
+                  borderRadius: "5px",
+                  content:
+                    filtersSelected.indexOf(type.type.toLowerCase()) === -1
+                      ? undefined
+                      : "''",
+                  position: "absolute",
+                  width: "50%",
+                  bottom: 0,
+                  left: "25%",
+                },
               }}
             >
               {type.type}

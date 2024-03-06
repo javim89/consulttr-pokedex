@@ -39,7 +39,7 @@ const PokemonSection = () => {
         ))}
       </Grid>
       <Grid
-        layout
+        container
         display="flex"
         justifyContent="center"
         alignItems="center"

@@ -42,15 +42,15 @@ const SearchSection = () => {
   }, [data]);
   return (
     <Box mb="30px">
-      <Grid container spacing={4}>
-        <Grid item xs={9} md={4}>
+      <Grid container spacing={1}>
+        <Grid item xs={10} md={4}>
           <Input
             fullWidth
             placeholder="Quick Search"
             onChange={(e) => handleOnChange(e.target.value)}
           />
         </Grid>
-        <Grid item xs={3} md={2}>
+        <Grid item xs={2} md={2}>
           <IconButton icon={<SearchIcon />} onClick={() => searchPokemon()} />
         </Grid>
       </Grid>
